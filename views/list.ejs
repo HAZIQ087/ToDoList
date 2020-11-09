@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/static.css">
+    <title>Document</title>
+  </head>
+
+  <body style="text-align: center;">
+    <div><h1>ToDo List </h1>
+      <form action="/add" method="POST">
+        <input type="text" name="itemname" />       
+        <button type="submit">ADD</button>
+      </form>
+      <form action="/deleteall" method="POST">
+        <button type="submit" >Delete All</button>
+      </form>
+       <hr />
+      <ol>
+        <%for(i=0;i<todolist.length;i++){%>
+        <li><%=todolist[i].name%>
+        <form action="/delete/<%=todolist[i].id%>" method="POST"><button type="submit">Delete</button></form>
+        <form action="/edit/<%=todolist[i].id%>" method="POST"><button type="submit">Edit</button><input type="text" name="editval"></form>
+        </li>
+        <% }%>
+      </ol>
+    </div>
+  </body>
+</html>
